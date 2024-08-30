@@ -1,11 +1,10 @@
 
 /**
- * Clase que me permite almacenar datos de producto 
- * @author coby_
- * 27-Ago 
+ * Clase que se realizo en la clase del 27 de agosto 
+ * @author coby 
+ * 30 -ago 
  */
 public class Producto {
-    
     String codigoBarras; 
     String nombre;
     double precio; 
@@ -25,5 +24,5 @@ public class Producto {
                 + precio + 
                 ", existencias=" + existencias + '}';
     }
- 
+    
 }
