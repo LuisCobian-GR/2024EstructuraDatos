@@ -27,9 +27,10 @@ public class ArregloUnidimensional {
             op = Integer.parseInt(sc.nextLine()); 
             switch(op){
                 case 1: 
-                    cargarValores(); 
+                    lista  = cargarValores(); 
                     break; 
                 case 2: 
+                    System.out.println(lista[0]);
                     System.out.println("Orden natural");
                     break; 
                 case 3: 
@@ -47,7 +48,7 @@ public class ArregloUnidimensional {
     /**
      * Metodo que me permite pedir los valores de la lista
      */
-    static void cargarValores(){
+    static Producto[] cargarValores(){ // declaracion 
         System.out.println("Cargar datos");
         Producto lista[] = new Producto[10]; 
         Scanner sc = new Scanner(System.in); 
@@ -60,6 +61,7 @@ public class ArregloUnidimensional {
             double precio = Double.parseDouble(sc.nextLine());
             lista[i] = new Producto(codigo, nombre, precio);
         }
+        return lista;
     }
     
 }
