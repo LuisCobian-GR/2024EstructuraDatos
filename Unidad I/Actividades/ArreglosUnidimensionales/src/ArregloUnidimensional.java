@@ -30,8 +30,7 @@ public class ArregloUnidimensional {
                     lista  = cargarValores(); 
                     break; 
                 case 2: 
-                    System.out.println(lista[0]);
-                    System.out.println("Orden natural");
+                    ordenNatural(lista); 
                     break; 
                 case 3: 
                     System.out.println("Orden inverso");
@@ -43,6 +42,14 @@ public class ArregloUnidimensional {
                     System.out.println("Opción invalida");
             } // switch 
         }while(op != 4); 
+    }
+    
+    static void ordenNatural(Producto[] lista){
+        System.out.println("La lista en orden natural");
+        for(Producto producto : lista){
+            // Aqui lo imprimo 
+            System.out.println(producto);
+        }
     }
     
     /**
