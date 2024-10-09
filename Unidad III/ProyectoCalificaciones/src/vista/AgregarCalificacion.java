@@ -4,6 +4,8 @@
  */
 package vista;
 
+import datos.Calificacion;
+import datos.ServicioDatos;
 import javax.swing.JOptionPane;
 
 /**
@@ -160,10 +162,14 @@ public class AgregarCalificacion extends javax.swing.JDialog {
         String nombre = jtxtNombre.getText(); 
         int semestre = Integer.parseInt(jtxtSemestre.getText()); 
         double calificacion = Double.parseDouble(jtxtCalificaciones.getText()); 
-        
-        String datos = String.format("%s - %s - %d - %f", clave,nombre,semestre,calificacion); 
-        //datos = clave + " - " + nombre + " -" + semestre + " - " + calificacion; 
-        JOptionPane.showMessageDialog(this, datos);
+       
+        Calificacion dato = new Calificacion
+                          (clave, nombre, semestre, calificacion);
+        // Aqui lo agregue al arreglo 
+        ServicioDatos.kardex[ServicioDatos.index] = dato; 
+        ServicioDatos.index ++; 
+        /// 
+        this.dispose();
     }//GEN-LAST:event_salvarDatosCaalificacion
 
     /**

@@ -4,6 +4,9 @@
  */
 package vista;
 
+import datos.ServicioDatos;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author coby_
@@ -30,7 +33,7 @@ public class Kardex extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtblCalificaciones = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +62,7 @@ public class Kardex extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtblCalificaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,7 +73,7 @@ public class Kardex extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtblCalificaciones);
 
         btnAgregar.setText("Agregar ");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +113,25 @@ public class Kardex extends javax.swing.JFrame {
 
     private void abrirDialogAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirDialogAgregar
         // TODO add your handling code here:
-        var ventanaAgregar = new AgregarCalificacion(this, true); 
+        AgregarCalificacion ventanaAgregar = new AgregarCalificacion(this, true); 
         ventanaAgregar.setLocationRelativeTo(this);
         ventanaAgregar.setVisible(true);
+        acomodarTabla(); 
     }//GEN-LAST:event_abrirDialogAgregar
 
+    private void acomodarTabla() {
+        int cantidadDatos = ServicioDatos.index; 
+        String[] columms = {"Clave", "Nombre", 
+            "Semestre", "Calificacion"}; 
+        String[][] contenido = new String[cantidadDatos][]; 
+        for(int i=0;i<cantidadDatos; i++){
+            contenido[i] = ServicioDatos.kardex[i].obttenerFilaTabla();
+        }
+        DefaultTableModel model = new DefaultTableModel
+                                    (contenido, columms); 
+        jtblCalificaciones.setModel(model);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -157,6 +174,6 @@ public class Kardex extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtblCalificaciones;
     // End of variables declaration//GEN-END:variables
 }
