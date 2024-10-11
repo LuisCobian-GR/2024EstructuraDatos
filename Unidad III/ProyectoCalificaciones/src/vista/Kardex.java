@@ -19,6 +19,7 @@ public class Kardex extends javax.swing.JFrame {
     public Kardex() {
         initComponents();
         setTitle("Mis Calificaciones");
+        acomodarTabla();
     }
 
     /**

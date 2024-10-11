@@ -17,12 +17,20 @@ public class OperacionesList {
         ArrayList<String> lista = new ArrayList<>();
         lista.add("Ariadna"); // agrega elementos 
         lista.add("Mayra"); 
+        lista.add("Sara"); 
+        lista.add("Juanita"); 
+        lista.add("Panchita"); 
         System.out.println("El tamaño: " + lista.size());
         System.out.println("Vacía?" + lista.isEmpty()); 
         System.out.println("Se encuentra Mayra " + lista.contains("Mayra"));
         lista.remove("Ariadna"); 
         System.out.println("Valor:" + lista.get(0));
         lista.set(0, "Sara");
+        System.out.println("Lista de los valores ");
+        //for(int i = 0; i< lista.size();i++){
+        for(String elemento : lista){
+            System.out.println(elemento);
+        }
         
     }
     
