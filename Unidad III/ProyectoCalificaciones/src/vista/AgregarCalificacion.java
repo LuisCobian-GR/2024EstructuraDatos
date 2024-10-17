@@ -168,7 +168,8 @@ public class AgregarCalificacion extends javax.swing.JDialog {
         // Aqui lo agregue al arreglo 
         ServicioDatos.kardex[ServicioDatos.index] = dato; 
         ServicioDatos.index ++; 
-        /// 
+        /// ahora lo quiereo la lista 
+        ServicioDatos.listCalificaciones.add(dato); 
         this.dispose();
     }//GEN-LAST:event_salvarDatosCaalificacion
 

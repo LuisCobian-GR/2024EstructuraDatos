@@ -36,6 +36,7 @@ public class Kardex extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtblCalificaciones = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,13 @@ public class Kardex extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Borrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarElemento(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,6 +102,8 @@ public class Kardex extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -105,7 +115,9 @@ public class Kardex extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -120,13 +132,38 @@ public class Kardex extends javax.swing.JFrame {
         acomodarTabla(); 
     }//GEN-LAST:event_abrirDialogAgregar
 
+    private void eliminarElemento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarElemento
+        // TODO add your handling code here:
+        int filaSeleccionada = jtblCalificaciones.getSelectedRow(); 
+        if(filaSeleccionada >=0){ // si seleccionamos algo
+              /// Si seleccione algo 
+              String clave = jtblCalificaciones.getValueAt
+                               (filaSeleccionada, 0).toString(); 
+              System.out.println("Clave: " + clave); 
+              System.out.println("Posicion" + filaSeleccionada);
+              
+              /// 1 Recorrer la lista 
+              // 2 buscar que la clave que selecciono sea igual 
+              // a la que esta en la lista
+              // 3. remover el elemento de la lista 
+              // 4 mandar llamar acomodar tabla 
+              
+              // ó 
+              // poner remove con el indice del seleccionado 
+              // (Solo funciona si la tabla no tiene activdado el 
+              // ordenamiento ) 
+        }
+    }//GEN-LAST:event_eliminarElemento
+
     private void acomodarTabla() {
-        int cantidadDatos = ServicioDatos.index; 
+        int cantidadDatos = ServicioDatos.listCalificaciones.size();  // <- Aquí hay qie modificar
         String[] columms = {"Clave", "Nombre", 
             "Semestre", "Calificacion"}; 
         String[][] contenido = new String[cantidadDatos][]; 
         for(int i=0;i<cantidadDatos; i++){
             contenido[i] = ServicioDatos.kardex[i].obttenerFilaTabla();
+            contenido[i] = ServicioDatos.listCalificaciones.get(i)
+                                      .obttenerFilaTabla(); 
         }
         DefaultTableModel model = new DefaultTableModel
                                     (contenido, columms); 
@@ -172,6 +209,7 @@ public class Kardex extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
