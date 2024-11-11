@@ -134,6 +134,7 @@ public class Kardex extends javax.swing.JFrame {
 
     private void eliminarElemento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarElemento
         // TODO add your handling code here:
+        System.out.println("Si estoy hacendo ");
         int filaSeleccionada = jtblCalificaciones.getSelectedRow(); 
         if(filaSeleccionada >=0){ // si seleccionamos algo
               /// Si seleccione algo 
@@ -141,6 +142,9 @@ public class Kardex extends javax.swing.JFrame {
                                (filaSeleccionada, 0).toString(); 
               System.out.println("Clave: " + clave); 
               System.out.println("Posicion" + filaSeleccionada);
+              
+              ServicioDatos.listCalificaciones.remove(filaSeleccionada); 
+              acomodarTabla();
               
               /// 1 Recorrer la lista 
               // 2 buscar que la clave que selecciono sea igual 
